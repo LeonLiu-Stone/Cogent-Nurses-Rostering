@@ -40,6 +40,8 @@ namespace Nurses.Rostering
 		{
 			var nurseProvider = new NurseProvider(nurse);
 
+			//Todo : better to check on uid for duplicate data
+
 			// set OneShiftPerDayNursePolicy as default policy
 			// could be dynamically mapping in the future
 			nurseProvider.NursePolicies.Add(new OneShiftPerDayNursePolicy(_logger));

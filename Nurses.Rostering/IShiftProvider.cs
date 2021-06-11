@@ -23,7 +23,7 @@ namespace Nurses.Rostering
 		}
 
 		public Shift Shift { get; set; }
-		public List<IShiftPolicy> ShiftPolicies { get; set; }
+		public List<IShiftPolicy> ShiftPolicies { get; set; } = new List<IShiftPolicy>();
 
 		public bool Workable(List<Nurse> nurses)
 		{
