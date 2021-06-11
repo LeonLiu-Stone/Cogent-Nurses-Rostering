@@ -16,33 +16,34 @@ namespace Nurses.Rostering
 		/// Returns all nurses
 		/// </summary>
 		/// <returns>a list of nurses providers</returns>
-		Task<List<INursesProvider>> GetAll();
+		List<INurseProvider> GetAll();
 
 		/// <summary>
 		/// Register a new nurse to list
 		/// </summary>
 		/// <param name="nurse">nurse details</param>
 		/// <returns></returns>
-		Task Enroll(Nurse nurse);
+		void Enroll(Nurse nurse);
 	}
 
 	public class NursesProvider : INursesProvider
 	{
 		protected readonly ILogger _logger;
+		private List<INurseProvider> _nursesProviders = new List<INurseProvider>();
 
 		public NursesProvider(ILogger<NursesProvider> logger)
 		{
 			_logger = logger;
 		}
 
-		public Task Enroll(Nurse nurse)
+		public void Enroll(Nurse nurse)
 		{
-			throw new NotImplementedException();
+			_nursesProviders.Add(new NurseProvider(nurse));
 		}
 
-		public Task<List<INursesProvider>> GetAll()
+		public List<INurseProvider> GetAll()
 		{
-			throw new NotImplementedException();
+			return _nursesProviders;
 		}
 	}
 }

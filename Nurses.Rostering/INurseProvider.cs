@@ -36,11 +36,9 @@ namespace Nurses.Rostering
 
 	public class NurseProvider: INurseProvider
 	{
-		protected readonly ILogger _logger;
-
-		public NurseProvider(ILogger<NurseProvider> logger)
+		public NurseProvider(Nurse nurse)
 		{
-			_logger = logger;
+			Nurse = nurse;
 		}
 
 		public Nurse Nurse { get; set; }

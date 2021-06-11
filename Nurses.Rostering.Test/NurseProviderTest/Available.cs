@@ -12,6 +12,7 @@ namespace Nurses.Rostering.Test.NurseProviderTest
 		public void ReturnFalse_WhenNursePoliciesFailed()
 		{
 			//Arrange
+			var nurse = new Nurse("111111", "Lei");
 			var schedule = new Schedule(DateTime.Now, "Morning");
 			var schedules = new List<Schedule>() {
 				new Schedule(DateTime.Now, "Night"),
@@ -21,9 +22,7 @@ namespace Nurses.Rostering.Test.NurseProviderTest
 				new OneShiftPerDayNursePolicy(StubHelper.StubILogger<OneShiftPerDayNursePolicy>().Object)
 			};
 
-			var stubILogger = StubHelper.StubILogger<NurseProvider>();
-
-			var testedService = new NurseProvider(stubILogger.Object);
+			var testedService = new NurseProvider(nurse);
 			testedService.Schedules = schedules;
 			testedService.NursePolicies = policies;
 
@@ -38,6 +37,7 @@ namespace Nurses.Rostering.Test.NurseProviderTest
 		public void ReturnTrue_WhenNursePoliciesPassed()
 		{
 			//Arrange
+			var nurse = new Nurse("111111", "Lei");
 			var schedule = new Schedule(DateTime.Now, "Morning");
 			var schedules = new List<Schedule>() {
 				new Schedule(DateTime.Now.AddDays(1), "Night")
@@ -46,9 +46,7 @@ namespace Nurses.Rostering.Test.NurseProviderTest
 				new OneShiftPerDayNursePolicy(StubHelper.StubILogger<OneShiftPerDayNursePolicy>().Object)
 			};
 
-			var stubILogger = StubHelper.StubILogger<NurseProvider>();
-
-			var testedService = new NurseProvider(stubILogger.Object);
+			var testedService = new NurseProvider(nurse);
 			testedService.Schedules = schedules;
 			testedService.NursePolicies = policies;
 
@@ -64,6 +62,7 @@ namespace Nurses.Rostering.Test.NurseProviderTest
 		public void ReturnTrue_WhenNoNursePoliciesDefined()
 		{
 			//Arrange
+			var nurse = new Nurse("111111", "Lei");
 			var schedule = new Schedule(DateTime.Now, "Morning");
 			var schedules = new List<Schedule>() {
 				new Schedule(DateTime.Now.AddDays(1), "Night")
@@ -72,7 +71,7 @@ namespace Nurses.Rostering.Test.NurseProviderTest
 
 			var stubILogger = StubHelper.StubILogger<NurseProvider>();
 
-			var testedService = new NurseProvider(stubILogger.Object);
+			var testedService = new NurseProvider(nurse);
 			testedService.Schedules = schedules;
 			testedService.NursePolicies = policies;
 
