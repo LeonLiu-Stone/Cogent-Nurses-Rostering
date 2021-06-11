@@ -1,17 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace Nurses.Rostering.Models
 {
-	public class Roster
+	public class Job
 	{
+		public Job(Schedule schedule, Nurse nurse)
+		{
+			Schedule = schedule;
+			Nurse = nurse;
+		}
+
 		public Schedule Schedule { get; set; }
 
 		public Nurse Nurse { get; set; }
-
-		public void Write()
-		{
-			Console.WriteLine("\nRESULT ROSTER");
-			Console.WriteLine("=============");
-			// TODO: write the roster to stdout
-		}
 	}
+
+	public class Roster
+	{
+		public List<Job> Jobs { get; set; } = new List<Job>();
+	}
+
 }

@@ -4,9 +4,9 @@ namespace Nurses.Rostering.Models
 {
 	public class Schedule
 	{
-		public Schedule(DateTime dateTime, string shiftName) {
+		public Schedule(DateTime dateTime, Shift shift) {
 			Date = dateTime.ToString("yyyy-MM-dd");
-			Shift = new Shift(shiftName);
+			Shift = shift;
 		}
 
 		public string Date { get; }

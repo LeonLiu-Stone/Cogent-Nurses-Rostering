@@ -50,7 +50,7 @@ namespace Nurses.Rostering
 		{
 			var shifts = _shiftsProvider.GetAll();
 			_schedules = GetDates(startDate, endDate)
-				.SelectMany(d => shifts.Select(s => new Schedule(d, s.Shift.Name)))
+				.SelectMany(d => shifts.Select(s => new Schedule(d, s.Shift)))
 				.ToList();
 
 			List<DateTime> GetDates(DateTime startDate, DateTime endDate) =>

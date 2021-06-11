@@ -12,10 +12,10 @@ namespace Nurses.Rostering.Test.OneShiftPerDayNursePolicyTest
 		public void ReturnFalse_WhenWorkOnASameDayTowice()
 		{
 			//Arrange
-			var newSchedule = new Schedule(DateTime.Now, "Morning");
+			var newSchedule = new Schedule(DateTime.Now, new Shift("Morning"));
 			var schedules = new List<Schedule>() {
-				new Schedule(DateTime.Now, "Night"),
-				new Schedule(DateTime.Now.AddDays(1), "Night")
+				new Schedule(DateTime.Now, new Shift("Night")),
+				new Schedule(DateTime.Now.AddDays(1), new Shift("Night"))
 			};
 
 			var stubILogger = StubHelper.StubILogger<OneShiftPerDayNursePolicy>();
@@ -35,9 +35,9 @@ namespace Nurses.Rostering.Test.OneShiftPerDayNursePolicyTest
 		public void ReturnTrue_WhenNoWorkOnASameDay()
 		{
 			//Arrange
-			var newSchedule = new Schedule(DateTime.Now, "Morning");
+			var newSchedule = new Schedule(DateTime.Now, new Shift("Morning"));
 			var schedules = new List<Schedule>() {
-				new Schedule(DateTime.Now.AddDays(1), "Night")
+				new Schedule(DateTime.Now.AddDays(1), new Shift("Night"))
 			};
 
 			var stubILogger = StubHelper.StubILogger<OneShiftPerDayNursePolicy>();
@@ -57,7 +57,7 @@ namespace Nurses.Rostering.Test.OneShiftPerDayNursePolicyTest
 		public void ReturnTrue_WhenNoSchedulesYet()
 		{
 			//Arrange
-			var newSchedule = new Schedule(DateTime.Now, "Morning");
+			var newSchedule = new Schedule(DateTime.Now, new Shift("Morning"));
 			List<Schedule> schedules = null;
 
 			var stubILogger = StubHelper.StubILogger<OneShiftPerDayNursePolicy>();

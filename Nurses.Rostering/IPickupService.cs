@@ -17,26 +17,25 @@ namespace Nurses.Rostering
 		/// </summary>
 		/// <param name="Schedule">schedule</param>
 		/// <returns>nurse</returns>
-		INurseProvider Pickup(Schedule schedule);
+		Nurse Pickup(Schedule schedule, List<INurseProvider> nurseProviders);
 	}
 
 	public class RandamPickupService : IPickupService
 	{
 		protected readonly ILogger _logger;
-		protected readonly INursesProvider _nursesProvider;
 
 		public RandamPickupService(
-			ILogger<RandamPickupService> logger,
-			INursesProvider nursesProvider)
+			ILogger<RandamPickupService> logger)
 		{
 			_logger = logger;
-			_nursesProvider = nursesProvider;
 		}
 
-		public INurseProvider Pickup(Schedule schedule)
+		public Nurse Pickup(Schedule schedule, List<INurseProvider> nurseProviders)
 		{
-			var nurses = _nursesProvider.GetAll();
+			//Clone a new nurse list
+			var nurses = new List<INurseProvider>(nurseProviders);
 
+			//var selectedNurse = nurses.FirstOrDefault(n => n.Available(schedule))
 			INurseProvider selectedNurse;
 			do
 			{
@@ -49,7 +48,7 @@ namespace Nurses.Rostering
 			} while (!selectedNurse.Available(schedule));
 
 
-			return selectedNurse;
+			return selectedNurse.Nurse;
 		}
 
 		private INurseProvider ReturnANurse(List<INurseProvider> nurseProviders)

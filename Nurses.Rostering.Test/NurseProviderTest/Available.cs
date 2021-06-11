@@ -13,10 +13,10 @@ namespace Nurses.Rostering.Test.NurseProviderTest
 		{
 			//Arrange
 			var nurse = new Nurse("111111", "Lei");
-			var schedule = new Schedule(DateTime.Now, "Morning");
+			var schedule = new Schedule(DateTime.Now, new Shift("Morning"));
 			var schedules = new List<Schedule>() {
-				new Schedule(DateTime.Now, "Night"),
-				new Schedule(DateTime.Now.AddDays(1), "Night")
+				new Schedule(DateTime.Now, new Shift("Night")),
+				new Schedule(DateTime.Now.AddDays(1), new Shift("Night"))
 			};
 			var policies = new List<INursePolicy>() {
 				new OneShiftPerDayNursePolicy(StubHelper.StubILogger<OneShiftPerDayNursePolicy>().Object)
@@ -38,9 +38,9 @@ namespace Nurses.Rostering.Test.NurseProviderTest
 		{
 			//Arrange
 			var nurse = new Nurse("111111", "Lei");
-			var schedule = new Schedule(DateTime.Now, "Morning");
+			var schedule = new Schedule(DateTime.Now, new Shift("Morning"));
 			var schedules = new List<Schedule>() {
-				new Schedule(DateTime.Now.AddDays(1), "Night")
+				new Schedule(DateTime.Now.AddDays(1), new Shift("Night"))
 			};
 			var policies = new List<INursePolicy>() {
 				new OneShiftPerDayNursePolicy(StubHelper.StubILogger<OneShiftPerDayNursePolicy>().Object)
@@ -63,9 +63,9 @@ namespace Nurses.Rostering.Test.NurseProviderTest
 		{
 			//Arrange
 			var nurse = new Nurse("111111", "Lei");
-			var schedule = new Schedule(DateTime.Now, "Morning");
+			var schedule = new Schedule(DateTime.Now, new Shift("Morning"));
 			var schedules = new List<Schedule>() {
-				new Schedule(DateTime.Now.AddDays(1), "Night")
+				new Schedule(DateTime.Now.AddDays(1), new Shift("Night"))
 			};
 			List<INursePolicy>policies = null;
 
