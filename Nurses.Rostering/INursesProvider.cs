@@ -31,7 +31,7 @@ namespace Nurses.Rostering
 		protected readonly ILogger _logger;
 		private List<INurseProvider> _nursesProviders = new List<INurseProvider>();
 
-		public NursesProvider(ILogger<NursesProvider> logger)
+		public NursesProvider(ILogger logger)
 		{
 			_logger = logger;
 		}

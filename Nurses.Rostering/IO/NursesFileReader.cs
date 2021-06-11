@@ -9,12 +9,14 @@ namespace Nurses.Rostering.IO
 {
     public class NursesFileReader
     {
-        public static List<Nurse> readCSV(INursesFile nursesFile)
+        public static List<Models.Nurse> readCSV(INursesFile nursesFile)
         {
             using (var csv = Factory.CreateCsvReader(nursesFile.OpenText()))
             {
                 csv.Configuration.ShouldSkipRecord = row => row.All(string.IsNullOrWhiteSpace);
-                return csv.GetRecords<Nurse>().Distinct().ToList();
+                return csv.GetRecords<Nurse>()
+                .Distinct()
+                .Select(n => new Models.Nurse(n.uid,n.name)).ToList();
             }
         }
     }

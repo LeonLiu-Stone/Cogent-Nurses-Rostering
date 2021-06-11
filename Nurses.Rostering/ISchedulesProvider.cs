@@ -34,7 +34,7 @@ namespace Nurses.Rostering
 		private List<Schedule> _schedules = new List<Schedule>(); 
 
 		public SchedulesProvider(
-			ILogger<RandamPickupService> logger,
+			ILogger logger,
 			IShiftsProvider shiftsProvider)
 		{
 			_logger = logger;

@@ -18,7 +18,7 @@ namespace Nurses.Rostering
 		protected readonly ILogger _logger;
 		private List<IShiftProvider> _shiftsProviders = new List<IShiftProvider>();
 
-		public ShiftsProvider(ILogger<ShiftsProvider> logger)
+		public ShiftsProvider(ILogger logger)
 		{
 			_logger = logger;
 		}

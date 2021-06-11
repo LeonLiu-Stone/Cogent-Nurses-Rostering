@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Nurses.Rostering
+namespace Nurses.Rostering.IO
 {
     public class Nurse : IEquatable<Nurse>
     {

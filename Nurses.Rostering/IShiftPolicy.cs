@@ -6,6 +6,7 @@ using Nurses.Rostering.Models;
 
 namespace Nurses.Rostering
 {
+
 	public interface IShiftPolicy
 	{
 		bool Pass(Shift shift, List<Nurse> nurses);
@@ -16,6 +17,9 @@ namespace Nurses.Rostering
 	/// </summary>
 	public class FiveNursesNeedPerShiftPolicy : IShiftPolicy
 	{
+		//Todo: get it from settings
+		const int DefaultNursesPerShift = 5;
+
 		protected readonly ILogger _logger;
 
 		public FiveNursesNeedPerShiftPolicy(ILogger logger)
@@ -30,7 +34,7 @@ namespace Nurses.Rostering
 				throw new SafeException("An invalid shift detected!");
 			}
 
-			return nurses?.Count() >= 5 ? true : false;
+			return nurses?.Count() >= DefaultNursesPerShift ? true : false;
 		}
 	}
 }

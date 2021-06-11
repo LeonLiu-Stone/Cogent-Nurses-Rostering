@@ -24,7 +24,7 @@ namespace Nurses.Rostering
 		protected readonly IShiftsProvider _shiftsProvider;
 
 		public RosterProvider(
-			ILogger<RosterProvider> logger,
+			ILogger logger,
 			ISchedulesProvider schedulesProvider,
 			INursesProvider nursesProvider,
 			IShiftsProvider shiftsProvider,

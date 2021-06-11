@@ -25,7 +25,7 @@ namespace Nurses.Rostering
 		protected readonly ILogger _logger;
 
 		public RandamPickupService(
-			ILogger<RandamPickupService> logger)
+			ILogger logger)
 		{
 			_logger = logger;
 		}
