@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Nurses.Rostering.Models;
 
@@ -8,7 +8,7 @@ namespace Nurses.Rostering
 {
 	public interface IShiftPolicy
 	{
-		Task<bool> Pass(Shift shift, List<Nurse> nurses);
+		bool Pass(Shift shift, List<Nurse> nurses);
 	}
 
 	/// <summary>
@@ -23,9 +23,14 @@ namespace Nurses.Rostering
 			_logger = logger;
 		}
 
-		public Task<bool> Pass(Shift shift, List<Nurse> nurses)
+		public bool Pass(Shift shift, List<Nurse> nurses)
 		{
-			throw new NotImplementedException();
+			if (shift == null)
+			{
+				throw new SafeException("An invalid shift detected!");
+			}
+
+			return nurses?.Count() >= 5 ? true : false;
 		}
 	}
 }
