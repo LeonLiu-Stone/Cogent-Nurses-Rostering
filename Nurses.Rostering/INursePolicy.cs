@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
@@ -18,7 +19,7 @@ namespace Nurses.Rostering
 		/// <param name="newSchedule">a schedule which the nurse will work on</param>
 		/// <param name="schedules">Enrolled Schedules</param>
 		/// <returns>True/False</returns>
-		Task<bool> Pass(Schedule newSchedule, List<Schedule> schedules);
+		bool Pass(Schedule newSchedule, List<Schedule> schedules);
 	}
 
 	/// <summary>
@@ -33,9 +34,9 @@ namespace Nurses.Rostering
 			_logger = logger;
 		}
 
-		public Task<bool> Pass(Schedule newSchedule, List<Schedule> schedules)
+		public bool Pass(Schedule newSchedule, List<Schedule> schedules)
 		{
-			throw new NotImplementedException();
+			return !schedules?.Any(s => s.Date == newSchedule.Date) ?? true;
 		}
 	}
 }

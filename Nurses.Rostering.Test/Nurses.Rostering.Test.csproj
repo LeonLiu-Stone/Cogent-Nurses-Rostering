@@ -12,6 +12,7 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
     <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
     <None Remove="FiveNursesNeedPerShiftPolicyTest\" />
     <None Remove="ShiftProviderTest\" />
     <None Remove="ShiftsProviderTest\" />
+    <None Remove="Microsoft.Extensions.Logging" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="OneShiftPerDayNursePolicyTest\" />
@@ -34,5 +36,8 @@
     <Folder Include="FiveNursesNeedPerShiftPolicyTest\" />
     <Folder Include="ShiftProviderTest\" />
     <Folder Include="ShiftsProviderTest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nurses.Rostering\Nurses.Rostering.csproj" />
   </ItemGroup>
 </Project>
