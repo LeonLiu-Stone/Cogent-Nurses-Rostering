@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Nurses.Rostering.Models;
 
@@ -31,7 +31,7 @@ namespace Nurses.Rostering
 		/// </summary>
 		/// <param name="Schedule">schedule</param>
 		/// <returns>True/False</returns>
-		Task<bool> Available(Schedule Schedule);
+		bool Available(Schedule Schedule);
 	}
 
 	public class NurseProvider: INurseProvider
@@ -43,13 +43,21 @@ namespace Nurses.Rostering
 			_logger = logger;
 		}
 
-		public Nurse Nurse { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-		public List<Schedule> Schedules { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-		public List<INursePolicy> NursePolicies { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+		public Nurse Nurse { get; set; }
+		public List<Schedule> Schedules { get; set; } = new List<Schedule>();
+		public List<INursePolicy> NursePolicies { get; set; } = new List<INursePolicy>();
 
-		public Task<bool> Available(Schedule Schedule)
+		public bool Available(Schedule Schedule)
 		{
-			throw new NotImplementedException();
+			if (Schedule == null)
+			{
+				throw new SafeException("An invalid schedule detected!");
+			}
+
+			//in this code test, no needs to run in parallel
+			var results = NursePolicies?.Select(p => p.Pass(Schedule, Schedules)) ?? null;
+
+			return results == null ? true : results.All(r => r);
 		}
 	}
 }
