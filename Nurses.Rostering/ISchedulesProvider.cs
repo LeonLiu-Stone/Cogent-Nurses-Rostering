@@ -24,33 +24,39 @@ namespace Nurses.Rostering
 		/// <param name="startDate">start date</param>
 		/// <param name="endDate">end date</param>
 		/// <returns></returns>
-		Task Initialise(DateTime startDate, DateTime endDate);
+		void Initialise(DateTime startDate, DateTime endDate);
 	}
 
 	public class SchedulesProvider : ISchedulesProvider
 	{
 		protected readonly ILogger _logger;
+		protected readonly IShiftsProvider _shiftsProvider;
+		private List<Schedule> _schedules = new List<Schedule>(); 
 
-		public SchedulesProvider(ILogger<RandamPickupService> logger)
+		public SchedulesProvider(
+			ILogger<RandamPickupService> logger,
+			IShiftsProvider shiftsProvider)
 		{
 			_logger = logger;
+			_shiftsProvider = shiftsProvider;
 		}
 
 		public List<Schedule> GetAll()
 		{
-			throw new NotImplementedException();
+			return _schedules;
 		}
 
-		public Task Initialise(DateTime startDate, DateTime endDate)
+		public void Initialise(DateTime startDate, DateTime endDate)
 		{
-			throw new NotImplementedException();
-			//var schedules = GetDates(startDate, endDate)
-			//	.SelectMany(d => );
+			var shifts = _shiftsProvider.GetAll();
+			_schedules = GetDates(startDate, endDate)
+				.SelectMany(d => shifts.Select(s => new Schedule(d, s.Shift.Name)))
+				.ToList();
 
-			//List<DateTime> GetDates(DateTime startDate, DateTime endDate) =>
-			//Enumerable.Range(0, 1 + endDate.Subtract(startDate).Days)
-			//	.Select(offset => startDate.AddDays(offset))
-			//	.ToList();
+			List<DateTime> GetDates(DateTime startDate, DateTime endDate) =>
+			Enumerable.Range(0, 1 + endDate.Subtract(startDate).Days)
+				.Select(offset => startDate.AddDays(offset))
+				.ToList();
 		}
 	}
 }
