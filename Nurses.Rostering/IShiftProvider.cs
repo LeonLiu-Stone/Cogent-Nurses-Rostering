@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
 using Microsoft.Extensions.Logging;
 using Nurses.Rostering.Models;
 
@@ -12,24 +12,24 @@ namespace Nurses.Rostering
 
 		List<IShiftPolicy> ShiftPolicies { get; set; }
 
-		Task<bool> Workable(List<Nurse> nurses);
+		bool Workable(List<Nurse> nurses);
 	}
 
 	public class ShiftProvider : IShiftProvider
 	{
-		protected readonly ILogger _logger;
-
-		public ShiftProvider(ILogger<ShiftProvider> logger)
+		public ShiftProvider(Shift shift)
 		{
-			_logger = logger;
+			Shift = shift;
 		}
 
-		public Shift Shift { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-		public List<IShiftPolicy> ShiftPolicies { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+		public Shift Shift { get; set; }
+		public List<IShiftPolicy> ShiftPolicies { get; set; }
 
-		public Task<bool> Workable(List<Nurse> nurses)
+		public bool Workable(List<Nurse> nurses)
 		{
-			throw new NotImplementedException();
+			var results = ShiftPolicies?.Select(p => p.Pass(Shift, nurses)) ?? null;
+
+			return results == null ? true : results.All(r => r);
 		}
 	}
 }

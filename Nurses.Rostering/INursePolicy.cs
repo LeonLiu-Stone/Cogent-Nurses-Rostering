@@ -29,7 +29,7 @@ namespace Nurses.Rostering
 	{
 		protected readonly ILogger _logger;
 
-		public OneShiftPerDayNursePolicy(ILogger<OneShiftPerDayNursePolicy> logger)
+		public OneShiftPerDayNursePolicy(ILogger logger)
 		{
 			_logger = logger;
 		}

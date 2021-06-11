@@ -38,7 +38,13 @@ namespace Nurses.Rostering
 
 		public void Enroll(Nurse nurse)
 		{
-			_nursesProviders.Add(new NurseProvider(nurse));
+			var nurseProvider = new NurseProvider(nurse);
+
+			// set OneShiftPerDayNursePolicy as default policy
+			// could be dynamically mapping in the future
+			nurseProvider.NursePolicies.Add(new OneShiftPerDayNursePolicy(_logger));
+
+			_nursesProviders.Add(nurseProvider);
 		}
 
 		public List<INurseProvider> GetAll()

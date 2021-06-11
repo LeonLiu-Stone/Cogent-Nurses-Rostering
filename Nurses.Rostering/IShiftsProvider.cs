@@ -8,28 +8,35 @@ namespace Nurses.Rostering
 {
 	public interface IShiftsProvider
 	{
-		Task<List<IShiftProvider>> GetAll();
+		List<IShiftProvider> GetAll();
 
-		Task Add(Shift shift);
+		void Add(Shift shift);
 	}
 
 	public class ShiftsProvider : IShiftsProvider
 	{
 		protected readonly ILogger _logger;
+		private List<IShiftProvider> _shiftsProviders = new List<IShiftProvider>();
 
 		public ShiftsProvider(ILogger<ShiftsProvider> logger)
 		{
 			_logger = logger;
 		}
 
-		public Task Add(Shift shift)
+		public void Add(Shift shift)
 		{
-			throw new NotImplementedException();
+			var shiftProvider = new ShiftProvider(shift);
+
+			// set OneShiftPerDayNursePolicy as default policy
+			// could be dynamically mapping in the future
+			shiftProvider.ShiftPolicies.Add(new FiveNursesNeedPerShiftPolicy(_logger));
+
+			_shiftsProviders.Add(shiftProvider);
 		}
 
-		public Task<List<IShiftProvider>> GetAll()
+		public List<IShiftProvider> GetAll()
 		{
-			throw new NotImplementedException();
+			return _shiftsProviders;
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Nurses.Rostering.Models;
@@ -15,7 +16,7 @@ namespace Nurses.Rostering
 		/// Returns all schedules
 		/// </summary>
 		/// <returns></returns>
-		Task<List<Schedule>> GetAll();
+		List<Schedule> GetAll();
 
 		/// <summary>
 		/// Generate schedules by giving data range 
@@ -35,7 +36,7 @@ namespace Nurses.Rostering
 			_logger = logger;
 		}
 
-		public Task<List<Schedule>> GetAll()
+		public List<Schedule> GetAll()
 		{
 			throw new NotImplementedException();
 		}
@@ -43,6 +44,13 @@ namespace Nurses.Rostering
 		public Task Initialise(DateTime startDate, DateTime endDate)
 		{
 			throw new NotImplementedException();
+			//var schedules = GetDates(startDate, endDate)
+			//	.SelectMany(d => );
+
+			//List<DateTime> GetDates(DateTime startDate, DateTime endDate) =>
+			//Enumerable.Range(0, 1 + endDate.Subtract(startDate).Days)
+			//	.Select(offset => startDate.AddDays(offset))
+			//	.ToList();
 		}
 	}
 }

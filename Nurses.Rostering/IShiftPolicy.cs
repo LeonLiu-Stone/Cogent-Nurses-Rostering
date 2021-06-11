@@ -18,7 +18,7 @@ namespace Nurses.Rostering
 	{
 		protected readonly ILogger _logger;
 
-		public FiveNursesNeedPerShiftPolicy(ILogger<FiveNursesNeedPerShiftPolicy> logger)
+		public FiveNursesNeedPerShiftPolicy(ILogger logger)
 		{
 			_logger = logger;
 		}
