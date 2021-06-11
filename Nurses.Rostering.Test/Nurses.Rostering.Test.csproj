@@ -21,7 +21,6 @@
     <None Remove="NursesProviderTest\" />
     <None Remove="RandamPickupServiceTest\" />
     <None Remove="SchedulesProviderTest\" />
-    <None Remove="Initialise\" />
     <None Remove="FiveNursesNeedPerShiftPolicyTest\" />
     <None Remove="ShiftProviderTest\" />
     <None Remove="ShiftsProviderTest\" />
@@ -32,7 +31,6 @@
     <Folder Include="NursesProviderTest\" />
     <Folder Include="RandamPickupServiceTest\" />
     <Folder Include="SchedulesProviderTest\" />
-    <Folder Include="Initialise\" />
     <Folder Include="FiveNursesNeedPerShiftPolicyTest\" />
     <Folder Include="ShiftProviderTest\" />
     <Folder Include="ShiftsProviderTest\" />

@@ -7,15 +7,15 @@ namespace Nurses.Rostering.Test.ShiftProviderTest
 	public class Workable
 	{
 		[Fact]
-		public Task ReturnFalse_WhenShiftPoliciesFailed()
+		public void ReturnFalse_WhenShiftPoliciesFailed()
 		{
-
+			Assert.False(true);
 		}
 
 		[Fact]
-		public Task ReturnTrue_WhenShiftPoliciesPassed()
+		public void ReturnTrue_WhenShiftPoliciesPassed()
 		{
-
+			Assert.False(true);
 		}
 	}
 }

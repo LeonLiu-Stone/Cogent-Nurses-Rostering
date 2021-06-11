@@ -7,16 +7,16 @@ namespace Nurses.Rostering.Test.SchedulesProviderTest
 	public class GetAll
 	{
 		[Fact]
-		public Task ReturnAnEmptyList_WhenNoScheduleGenerated()
+		public void ReturnAnEmptyList_WhenNoScheduleGenerated()
 		{
-
+			Assert.False(true);
 		}
 
 
 		[Fact]
-		public Task ReturnSchedules_WhenSchedulesGenerated()
+		public void ReturnSchedules_WhenSchedulesGenerated()
 		{
-
+			Assert.False(true);
 		}
 	}
 }

@@ -7,16 +7,16 @@ namespace Nurses.Rostering.Test.FiveNursesNeedPerShiftPolicyTest
 	public class Pass
 	{
 		[Fact]
-		public Task ReturnFalse_WhenLessThanFiveNursesOnShift()
+		public void ReturnFalse_WhenLessThanFiveNursesOnShift()
 		{
-
+			Assert.False(true);
 		}
 
 
 		[Fact]
-		public Task ReturnTrue_WhenMoreThanFiveNursesOnShift()
+		public void ReturnTrue_WhenMoreThanFiveNursesOnShift()
 		{
-
+			Assert.False(true);
 		}
 	}
 }

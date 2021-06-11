@@ -7,16 +7,16 @@ namespace Nurses.Rostering.Test.ShiftsProviderTest
 	public class Add
 	{
 		[Fact]
-		public Task CanAddShiftToList_WhenShiftDataIsValid()
+		public void CanAddShiftToList_WhenShiftDataIsValid()
 		{
-
+			Assert.False(true);
 		}
 
 
 		[Fact]
-		public Task ThrowException_WhenShiftDataIsNotValid()
+		public void ThrowException_WhenShiftDataIsNotValid()
 		{
-
+			Assert.False(true);
 		}
 	}
 }

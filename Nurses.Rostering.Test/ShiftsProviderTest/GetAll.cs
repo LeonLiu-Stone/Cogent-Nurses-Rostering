@@ -7,16 +7,16 @@ namespace Nurses.Rostering.Test.ShiftsProviderTest
 	public class GetAll
 	{
 		[Fact]
-		public Task ReturnAnEmptyList_WhenNoShiftDefined()
+		public void ReturnAnEmptyList_WhenNoShiftDefined()
 		{
-
+			Assert.False(true);
 		}
 
 
 		[Fact]
-		public Task ReturnShiftProviderList_WhenHaveShiftsDefined()
+		public void ReturnShiftProviderList_WhenHaveShiftsDefined()
 		{
-
+			Assert.False(true);
 		}
 	}
 }

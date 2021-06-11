@@ -7,15 +7,15 @@ namespace Nurses.Rostering.Test.SchedulesProviderTest
 	public class Initialise
 	{
 		[Fact]
-		public Task CanGenerateSchedules_WhenDateRangeIsValid()
+		public void CanGenerateSchedules_WhenDateRangeIsValid()
 		{
-
+			Assert.False(true);
 		}
 
 		[Fact]
-		public Task ThrowException_WhenDateRangeIsNotValid()
+		public void ThrowException_WhenDateRangeIsNotValid()
 		{
-
+			Assert.False(true);
 		}
 	}
 }

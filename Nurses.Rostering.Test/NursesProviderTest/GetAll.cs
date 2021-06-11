@@ -7,16 +7,16 @@ namespace Nurses.Rostering.Test.NursesProviderTest
 	public class GetAll
 	{
 		[Fact]
-		public Task ReturnAnEmptyList_WhenNoNurseEnrolled()
+		public void ReturnAnEmptyList_WhenNoNurseEnrolled()
 		{
-
+			Assert.False(true);
 		}
 
 
 		[Fact]
-		public Task ReturnNurseProviderList_WhenHaveNursesEnrolled()
+		public void ReturnNurseProviderList_WhenHaveNursesEnrolled()
 		{
-
+			Assert.False(true);
 		}
 	}
 }

@@ -7,16 +7,16 @@ namespace Nurses.Rostering.Test.NursesProviderTest
 	public class Enroll
 	{
 		[Fact]
-		public Task CanAddNurseToList_WhenNurseDataIsValid()
+		public void CanAddNurseToList_WhenNurseDataIsValid()
 		{
-
+			Assert.False(true);
 		}
 
 
 		[Fact]
-		public Task ThrowException_WhenNurseDataIsNotValid()
+		public void ThrowException_WhenNurseDataIsNotValid()
 		{
-
+			Assert.False(true);
 		}
 	}
 }

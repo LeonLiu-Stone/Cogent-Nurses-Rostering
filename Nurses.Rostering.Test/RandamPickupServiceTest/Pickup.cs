@@ -7,15 +7,15 @@ namespace Nurses.Rostering.Test.RandamPickupServiceTest
 	public class Pickup
 	{
 		[Fact]
-		public Task ReturnANurse_WhenNurseIsFreeOnSchedule()
+		public void ReturnANurse_WhenNurseIsFreeOnSchedule()
 		{
-
+			Assert.False(true);
 		}
 
 		[Fact]
-		public Task ReturnNull_WhenNoNurseIsFreeOnSchedule()
+		public void ReturnNull_WhenNoNurseIsFreeOnSchedule()
 		{
-
+			Assert.False(true);
 		}
 	}
 }

@@ -7,16 +7,16 @@ namespace Nurses.Rostering.Test.OneShiftPerDayNursePolicyTest
 	public class Pass
 	{
 		[Fact]
-		public Task ReturnFalse_WhenWorkOnASameDayTowice()
+		public void ReturnFalse_WhenWorkOnASameDayTowice()
 		{
-
+			Assert.False(true);
 		}
 
 
 		[Fact]
-		public Task ReturnTrue_WhenNoWorkOnASameDay()
+		public void ReturnTrue_WhenNoWorkOnASameDay()
 		{
-
+			Assert.False(true);
 		}
 	}
 }

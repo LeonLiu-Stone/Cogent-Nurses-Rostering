@@ -7,15 +7,15 @@ namespace Nurses.Rostering.Test.NurseProviderTest
 	public class Available
 	{
 		[Fact]
-		public Task ReturnFalse_WhenNursePoliciesFailed()
+		public void ReturnFalse_WhenNursePoliciesFailed()
 		{
-
+			Assert.False(true);
 		}
 
 		[Fact]
-		public Task ReturnTrue_WhenNursePoliciesPassed()
+		public void ReturnTrue_WhenNursePoliciesPassed()
 		{
-
+			Assert.False(true);
 		}
 	}
 }
