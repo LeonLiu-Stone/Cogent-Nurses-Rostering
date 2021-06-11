@@ -71,5 +71,25 @@ namespace Nurses.Rostering.Test.OneShiftPerDayNursePolicyTest
 			//Assert
 			Assert.True(result);
 		}
+
+		[Fact]
+		public void ThrowException_WhenNewScheduleIsNull()
+		{
+			//Arrange
+			Schedule newSchedule = null;
+			List<Schedule> schedules = null;
+
+			var stubILogger = StubHelper.StubILogger<OneShiftPerDayNursePolicy>();
+
+			var testedService = new OneShiftPerDayNursePolicy(
+				stubILogger.Object);
+
+			//Act
+			Action act = () => testedService.Pass(newSchedule, schedules);
+
+			//Assert
+			SafeException exception = Assert.Throws<SafeException>(act);
+			Assert.Equal("An invalid schedule detected!", exception.Message);
+		}
 	}
 }

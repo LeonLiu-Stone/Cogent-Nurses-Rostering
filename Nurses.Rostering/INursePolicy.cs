@@ -36,6 +36,10 @@ namespace Nurses.Rostering
 
 		public bool Pass(Schedule newSchedule, List<Schedule> schedules)
 		{
+			if (newSchedule == null)
+			{
+				throw new SafeException("An invalid schedule detected!");
+			}
 			return !schedules?.Any(s => s.Date == newSchedule.Date) ?? true;
 		}
 	}
