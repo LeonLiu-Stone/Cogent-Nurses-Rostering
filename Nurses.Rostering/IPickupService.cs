@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Nurses.Rostering.Models;
@@ -15,7 +17,7 @@ namespace Nurses.Rostering
 		/// </summary>
 		/// <param name="Schedule">schedule</param>
 		/// <returns>nurse</returns>
-		Task<Nurse> Pickup(Schedule Schedule);
+		INurseProvider Pickup(Schedule schedule);
 	}
 
 	public class RandamPickupService : IPickupService
@@ -31,9 +33,31 @@ namespace Nurses.Rostering
 			_nursesProvider = nursesProvider;
 		}
 
-		public Task<Nurse> Pickup(Schedule Schedule)
+		public INurseProvider Pickup(Schedule schedule)
 		{
-			throw new NotImplementedException();
+			var nurses = _nursesProvider.GetAll();
+
+			INurseProvider selectedNurse;
+			do
+			{
+				if (!nurses.Any()) {
+					throw new SafeException("No nurse is available on this schedule");
+				}
+
+				selectedNurse = ReturnANurse(nurses);
+				nurses.Remove(selectedNurse);
+			} while (!selectedNurse.Available(schedule));
+
+
+			return selectedNurse;
+		}
+
+		private INurseProvider ReturnANurse(List<INurseProvider> nurseProviders)
+		{
+			// Todo: should move out from this method
+			var rand = new Random();
+			int rInt = rand.Next(0, nurseProviders.Count - 1);
+			return nurseProviders[rInt];
 		}
 	}
 }
